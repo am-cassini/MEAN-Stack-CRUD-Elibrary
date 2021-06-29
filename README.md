@@ -1,2 +1,2 @@
-# MEAN-Stack-Crud-Elibrary
+# Project-1-MEAN-Stack-Crud-Elibrary
  CRUD functions using MEAN stack for E-library MSU-GSC
