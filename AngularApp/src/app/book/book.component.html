@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content white-text">
+            <img src="https://snipboard.io/mM8s6d.jpg" width="1450" height="600">
+            <h1 style="font-size:25px;">
+                Add Book Information</h1>
+            <div class="row">
+                <div class="col s5">
+                    <form #bookForm="ngForm" (ngSubmit)="onSubmit(bookForm)">
+                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="bookService.selectedBook._id">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="title" #name="ngModel" [(ngModel)]="bookService.selectedBook.title" 
+                                placeholder="Enter book title" required>
+                                <label>Title :</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="author" #name="ngModel" [(ngModel)]="bookService.selectedBook.author" 
+                                placeholder="Enter author's name" required>
+                                <label>Author :</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="yearPublished" #name="ngModel" [(ngModel)]="bookService.selectedBook.yearPublished" 
+                                placeholder="E.g. 1999" required>
+                                <label>Year Published :</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="isbn" #name="ngModel" [(ngModel)]="bookService.selectedBook.isbn" 
+                                placeholder="Enter isbn" required>
+                                <label>ISBN :</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="category" #name="ngModel" [(ngModel)]="bookService.selectedBook.category" 
+                                placeholder="E.g. Science" required>
+                                <label>Category :</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <button class="btn btn-custom right" type="button" (click)="resetForm(bookForm)">Clear</button>
+                                <button class="btn btn-custom right" type="submit" [disabled]="!bookForm.valid">Submit</button>
+                            </div>
+                        </div>
+                        </form>
+                      </div>
+                      <div class="col s7">
+                        <table class="responsive-table highlight">
+                            <thead>
+                              <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Year Published</th>
+                                <th>ISBN</th>
+                                <th>Category</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tr *ngFor="let emp of bookService.books">
+                              <td>{{emp.title}}</td>
+                              <td>{{emp.author}}</td>
+                              <td>{{emp.yearPublished}}</td>
+                              <td>{{emp.isbn}}</td>
+                              <td>{{emp.category}}</td>
+                              <td>
+                                <a class="action-btn" (click)="onEdit(emp)">
+                                  <i class="material-icons">edit</i>
+                                </a>
+                                <a class="action-btn" (click)="onDelete(emp._id,bookForm)">
+                                  <i class="material-icons">delete</i>
+                                </a>
+                              </td>
+                            </tr>
+                          </table>
+                    </div>
+                </div>
+            </div>  
+        </div> 
+    </div> 
+</div> 
